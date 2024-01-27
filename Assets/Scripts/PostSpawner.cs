@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -15,6 +16,7 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
     }
 
     List<Post> posts = new List<Post>();
+    public Post NextPost => posts.FirstOrDefault(); 
 
     public Post SpawnPost(Post post, float speed)
     {
@@ -23,6 +25,13 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
 
         posts.Add(spawnedPost);
         return spawnedPost;
+    }
+
+    public void RemovePost(Post post)
+    {
+        posts.Remove(post);
+        GameObject.Destroy(post.gameObject);
+        //TODO: death anim
     }
 
     public new void OnNotify(Playable origin, INotification notification, object context)

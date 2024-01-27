@@ -18,4 +18,11 @@ public class Post : MonoBehaviour
     {
         transform.position += Vector3.up * Speed *Time.deltaTime;
     }
+
+    //public void Read()
+    //{
+    //    PostSpawner.Instance.RemovePost(this);
+    //}
+
+
 }

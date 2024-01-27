@@ -12,18 +12,14 @@ public class Player : MonoBehaviour
 
     private void OnSwipe(PlayerInput.SwipeDirection direction)
     {
+        var spawner = PostSpawner.Instance;
         switch(direction)
         {
             case PlayerInput.SwipeDirection.RIGHT:
-                break;
             case PlayerInput.SwipeDirection.LEFT:
+                spawner.RemovePost(spawner.NextPost);
                 break;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

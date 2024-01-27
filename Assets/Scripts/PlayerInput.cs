@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour, IEndDragHandler, IPointerClickHandler,
 
     public Action<SwipeDirection> OnSwipe;
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
         OnSwipe += (dir) => Debug.Log("Swipped " + dir);
