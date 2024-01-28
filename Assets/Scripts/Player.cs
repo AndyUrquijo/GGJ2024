@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
             case PlayerInput.SwipeDirection.LEFT:
                 if(nextPost.Value == Post.ExistentialValue.CHILL)
                     HealthCounter.Instance.LoseHealth();
-                nextPost.Read();
+                nextPost.Pass();
                 break;
         }
     }

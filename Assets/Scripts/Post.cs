@@ -13,20 +13,38 @@ public class Post : MonoBehaviour
     }
     public ExistentialValue Value;
 
+    Animator animator;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void SetSpeed(float speed)
     {
-        GetComponent<Animator>().speed = speed;
+        animator.speed = speed;
     }
 
     public void Read()
     {
+        Debug.Log("Reading");
         PostSpawner.Instance.RemovePost(this);
-        GameObject.Destroy(gameObject); // TODO: Replace with anim
+        animator.SetTrigger("Read");
     }
 
-    public void Ignore()
+    public void Pass()
+    {
+        Debug.Log("Passing");
+        PostSpawner.Instance.RemovePost(this);
+        animator.SetTrigger("Pass");
+    }
+
+    public void Blow()
     {
         PostSpawner.Instance.RemovePost(this);
-        GameObject.Destroy(gameObject); // TODO: Replace with anim
+    }
+
+    public void Destroy() // Called from anim
+    {
+        GameObject.Destroy(gameObject);
     }
 }
