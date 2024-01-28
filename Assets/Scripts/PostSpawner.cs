@@ -36,6 +36,8 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
 
     public new void OnNotify(Playable origin, INotification notification, object context)
     {
+        if(!Application.isPlaying) return;
+
         SignalEmitter signalEmitter = notification as SignalEmitter;
         if(signalEmitter == null) return;
         //Debug.Log("Signal asset name: " + signalEmitter.asset.name);
