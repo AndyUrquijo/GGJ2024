@@ -37,7 +37,7 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
     {
         SignalEmitter signalEmitter = notification as SignalEmitter;
         if(signalEmitter == null) return;
-        Debug.Log("Signal asset name: " + signalEmitter.asset.name);
+        //Debug.Log("Signal asset name: " + signalEmitter.asset.name);
 
         if(notification is SpawnSignal postEmitter)
         {

@@ -30,18 +30,9 @@ public class Player : MonoBehaviour
     {
         // TODO: Dread cards here
         var nextPost = PostSpawner.Instance.NextPost;
-        if(nextPost.Value != Post.ExistentialValue.DREAD) return;
-
-        if(nextPost.TapCounter > 0)
-        {
-            nextPost.TapCounter--;
+        if(nextPost == null) return;
+        if(nextPost.Value == Post.ExistentialValue.DREAD)
             nextPost.Tap();
-        }
-
-        if(nextPost.TapCounter <= 0)
-        {
-            nextPost.Pass();
-        }
     }
 
     void OnSwipe(PlayerInput.SwipeDirection direction)
@@ -49,37 +40,24 @@ public class Player : MonoBehaviour
         var nextPost = PostSpawner.Instance.NextPost;
         if(nextPost == null) return;
 
+        if(nextPost.Value == Post.ExistentialValue.DREAD) return;
+
+
         switch(direction)
         {
             case PlayerInput.SwipeDirection.RIGHT:
-                if(nextPost.Value == Post.ExistentialValue.ANGST)
-                {
-                    LoseHealth();
-                    animator.SetTrigger(nextPost.ReactionId);
-                }
-                else if(nextPost.Value == Post.ExistentialValue.CHILL)
-                {
-                    animator.SetTrigger(nextPost.ReactionId);
-                    //animator.SetTrigger("Glad");
-                }
-
                 nextPost.Read();
                 break;
 
             case PlayerInput.SwipeDirection.LEFT:
-                if(nextPost.Value == Post.ExistentialValue.CHILL)
-                {
-                    LoseHealth();
-                    animator.SetTrigger("Sad");
-                }
-                else if(nextPost.Value == Post.ExistentialValue.ANGST)
-                {
-                    //animator.SetTrigger("sumthin");
-                }
-
                 nextPost.Pass();
                 break;
         }
+    }
+
+    public void PlayReaction(string emotion)
+    {
+        animator.SetTrigger(emotion);
     }
 
     public void LoseHealth()

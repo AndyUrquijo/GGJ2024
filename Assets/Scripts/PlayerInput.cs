@@ -21,7 +21,7 @@ public class PlayerInput : MonoBehaviour, IEndDragHandler, IPointerClickHandler,
     private void Awake()
     {
         Instance = this;
-        OnSwipe += (dir) => Debug.Log("Swipped " + dir);
+        //OnSwipe += (dir) => Debug.Log("Swipped " + dir);
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -49,7 +49,7 @@ public class PlayerInput : MonoBehaviour, IEndDragHandler, IPointerClickHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("Click");
+        Debug.Log("Click");
         OnTap.Invoke();
     }
 
