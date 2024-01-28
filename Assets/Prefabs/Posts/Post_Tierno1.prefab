@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2033136508669791148, guid: cb01ee4d65f6e7a47942c8153b8bef89, type: 3}
       propertyPath: Reaction
-      value: Laugh
+      value: Moved
       objectReference: {fileID: 0}
+    - target: {fileID: 2033136508669791148, guid: cb01ee4d65f6e7a47942c8153b8bef89, type: 3}
+      propertyPath: ReactionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a40c011b9dd3257478b1ffd0b737a859, type: 3}
     - target: {fileID: 2306186021867113125, guid: cb01ee4d65f6e7a47942c8153b8bef89, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

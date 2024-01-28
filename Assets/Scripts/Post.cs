@@ -10,12 +10,16 @@ public class Post : MonoBehaviour
     }
     public ExistentialValue Value;
     public string Reaction;
+
+    [SerializeField] AudioClip ReactionClip;
     Animator animator;
+    AudioSource audioSource;
     [SerializeField] TMPro.TextMeshProUGUI TapCounterLabel;
     public int TapCounter = 0;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         if(TapCounterLabel != null )
             TapCounterLabel.SetText(TapCounter.ToString());
@@ -34,7 +38,6 @@ public class Post : MonoBehaviour
             Player.Instance.LoseHealth();
         }
         //Debug.Log("Reading");
-        Player.Instance.PlayReaction(Reaction);
         animator.speed = 1;
         PostSpawner.Instance.RemovePost(this); 
         animator.SetTrigger("Read");
@@ -58,7 +61,6 @@ public class Post : MonoBehaviour
         animator.speed = 1;
         PostSpawner.Instance.RemovePost(this);
         Player.Instance.LoseHealth();
-        Player.Instance.PlayReaction("Angry");
 
     }
 
@@ -76,4 +78,25 @@ public class Post : MonoBehaviour
     {
         GameObject.Destroy(gameObject);
     }
+
+    public void PlayClip(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
+    public void PlayReactionClip()
+    {
+        audioSource.PlayOneShot(ReactionClip);
+    }
+
+
+    public void PlayPlayer(string reaction)
+    {
+        Player.Instance.PlayReaction(reaction);
+    }
+    public void PlayReactionPlayer()
+    {
+        Player.Instance.PlayReaction(Reaction);
+    }
+
 }

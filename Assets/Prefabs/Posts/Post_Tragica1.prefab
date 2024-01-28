@@ -157,6 +157,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2033136508669791148, guid: cb01ee4d65f6e7a47942c8153b8bef89, type: 3}
+      propertyPath: ReactionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d3a4fb8a9c3f884c9962998f1ed2b0a, type: 3}
+    - target: {fileID: 2033136508669791148, guid: cb01ee4d65f6e7a47942c8153b8bef89, type: 3}
       propertyPath: TapCounterLabel
       value: 
       objectReference: {fileID: 5312038377738253203}
