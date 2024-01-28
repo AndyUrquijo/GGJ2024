@@ -41,6 +41,7 @@ public class Post : MonoBehaviour
     public void Blow()
     {
         PostSpawner.Instance.RemovePost(this);
+        HealthCounter.Instance.LoseHealth();
     }
 
     public void Destroy() // Called from anim
