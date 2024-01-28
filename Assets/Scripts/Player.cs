@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class Player : MonoBehaviour
 {
@@ -69,13 +70,15 @@ public class Player : MonoBehaviour
         OnLoseHealth.Invoke();
         if(Health <= 0)
         {
-            UIManager.Instance.GameOver();
-            //TODO: LOSE CONDITION HERE
+            string gameOverLabel = UnityEngine.Random.Range(0, 2) == 0 ?
+                "Consumiste demasiado contenido político y te has convertido en militante de un partido de extrema derecha." :
+                "Tuviste una sobredosis de preocupación y desarrollaste un trastorno de ansiedad.";
+
+            UIManager.Instance.GameOver("GAME OVER", gameOverLabel);
         }
         else
         {
             OnLoseHealth.Invoke();
-            //TODO: update health ui, trigger anim, etc
         }
     }
 }

@@ -46,7 +46,7 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
         }
         else if(signalEmitter.asset.name == "EndSignal") 
         {
-            UIManager.Instance.GameOver();
+            UIManager.Instance.GameOver("¡FELICIDADES!","Has logrado evadir la realidad lo suficiente para continuar con tu día.");
         }
     }
 }
