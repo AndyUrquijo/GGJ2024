@@ -4,13 +4,16 @@ public class Post : MonoBehaviour
 {
     public enum ExistentialValue
     {
-        CHILL, 
-        DREAD
+        CHILL, // Swipe these right
+        ANGST, // Swpie these left
+        DREAD // tap the heck out of em
     }
     public ExistentialValue Value;
     public string Reaction;
-    public int ReactionId;
+    [HideInInspector] public int ReactionId;
     Animator animator;
+
+    public int TapCounter = 0;
 
     private void Awake()
     {
@@ -41,6 +44,11 @@ public class Post : MonoBehaviour
     {
         PostSpawner.Instance.RemovePost(this);
         Player.Instance.LoseHealth();
+    }
+
+    public void Tap()
+    {
+        animator.SetTrigger("Tap");
     }
 
     public void Destroy() // Called from anim

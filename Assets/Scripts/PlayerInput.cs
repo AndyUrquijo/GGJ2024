@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour, IEndDragHandler, IPointerClickHandler,
     public static PlayerInput Instance { get; private set; }
 
     public Action<SwipeDirection> OnSwipe;
+    public Action OnTap;
 
     private void Awake()
     {
@@ -49,6 +50,7 @@ public class PlayerInput : MonoBehaviour, IEndDragHandler, IPointerClickHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         //Debug.Log("Click");
+        OnTap.Invoke();
     }
 
     public void OnDrag(PointerEventData eventData)

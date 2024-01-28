@@ -23,6 +23,25 @@ public class Player : MonoBehaviour
     void Start()
     {
         PlayerInput.Instance.OnSwipe += OnSwipe;
+        PlayerInput.Instance.OnTap += OnTap;
+    }
+
+    private void OnTap()
+    {
+        // TODO: Dread cards here
+        var nextPost = PostSpawner.Instance.NextPost;
+        if(nextPost.Value != Post.ExistentialValue.DREAD) return;
+
+        if(nextPost.TapCounter > 0)
+        {
+            nextPost.TapCounter--;
+            nextPost.Tap();
+        }
+
+        if(nextPost.TapCounter <= 0)
+        {
+            nextPost.Pass();
+        }
     }
 
     void OnSwipe(PlayerInput.SwipeDirection direction)
@@ -33,12 +52,12 @@ public class Player : MonoBehaviour
         switch(direction)
         {
             case PlayerInput.SwipeDirection.RIGHT:
-                if(nextPost.Value == Post.ExistentialValue.DREAD)
+                if(nextPost.Value == Post.ExistentialValue.ANGST)
                 {
                     LoseHealth();
                     animator.SetTrigger(nextPost.ReactionId);
                 }
-                else
+                else if(nextPost.Value == Post.ExistentialValue.CHILL)
                 {
                     animator.SetTrigger(nextPost.ReactionId);
                     //animator.SetTrigger("Glad");
@@ -53,7 +72,7 @@ public class Player : MonoBehaviour
                     LoseHealth();
                     animator.SetTrigger("Sad");
                 }
-                else
+                else if(nextPost.Value == Post.ExistentialValue.ANGST)
                 {
                     //animator.SetTrigger("sumthin");
                 }
