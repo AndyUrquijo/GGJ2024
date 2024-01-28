@@ -8,31 +8,21 @@ public class HealthCounter : MonoBehaviour
     // Start is called before the first frame update
     public static HealthCounter Instance;
 
-    public int HealthCount = 3;
     void Awake()
     {
         Instance = this;
         label = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+    }
+
+    void Start()
+    {
         UpdateLabel();
+        Player.Instance.OnLoseHealth += UpdateLabel;
     }
 
     void UpdateLabel()
     {
-        label.SetText(HealthCount.ToString());
+        label.SetText(Player.Instance.Health.ToString());
     }
    
-    public void LoseHealth()
-    {
-        HealthCount--;
-        UpdateLabel();
-        if(HealthCount == 0)
-        {
-            UIManager.Instance.GameOver();
-            //TODO: LOSE CONDITION HERE
-        }
-        else
-        {
-            //TODO: update health ui, trigger anim, etc
-        }
-    }
 }

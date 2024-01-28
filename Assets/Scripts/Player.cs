@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+
+    public int Health;
+    public int MaxHealth { get; private set; }
+
+    public Action OnLoseHealth;
+    Animator animator;
+
+    void Awake()
+    {
+        Instance = this;
+        MaxHealth = Health;
+        animator = GetComponent<Animator>();
+        animator.SetFloat("HealthRatio", 1);
+    }
 
     void Start()
     {
@@ -14,20 +29,51 @@ public class Player : MonoBehaviour
     void OnSwipe(PlayerInput.SwipeDirection direction)
     {
         var nextPost = PostSpawner.Instance.NextPost;
+        if(nextPost == null) return;
+
         switch(direction)
         {
-            case PlayerInput.SwipeDirection.RIGHT: 
+            case PlayerInput.SwipeDirection.RIGHT:
                 if(nextPost.Value == Post.ExistentialValue.DREAD)
-                    HealthCounter.Instance.LoseHealth();
+                {
+                    LoseHealth();
+                    animator.SetTrigger("Surprise");
+                }
+                else
+                    animator.SetTrigger("Glad");
+
                 nextPost.Read();
                 break;
 
             case PlayerInput.SwipeDirection.LEFT:
                 if(nextPost.Value == Post.ExistentialValue.CHILL)
-                    HealthCounter.Instance.LoseHealth();
+                {
+                    LoseHealth();
+                    animator.SetTrigger("Surprise");
+                }
+                else
+                    animator.SetTrigger("Glad");
                 nextPost.Pass();
                 break;
         }
     }
 
+    public void LoseHealth()
+    {
+        Health--;
+        Health = Math.Max(0, Health);
+
+        animator.SetFloat("HealthRatio", (float)Health / MaxHealth);
+        OnLoseHealth.Invoke();
+        if(Health <= 0)
+        {
+            UIManager.Instance.GameOver();
+            //TODO: LOSE CONDITION HERE
+        }
+        else
+        {
+            OnLoseHealth.Invoke();
+            //TODO: update health ui, trigger anim, etc
+        }
+    }
 }
