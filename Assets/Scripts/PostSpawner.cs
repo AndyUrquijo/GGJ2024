@@ -35,9 +35,17 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
 
     public new void OnNotify(Playable origin, INotification notification, object context)
     {
+        SignalEmitter signalEmitter = notification as SignalEmitter;
+        if(signalEmitter == null) return;
+        Debug.Log("Signal asset name: " + signalEmitter.asset.name);
+
         if(notification is SpawnSignal postEmitter)
         {
             SpawnPost(postEmitter.Post, postEmitter.Speed);
+        }
+        else if(signalEmitter.asset.name == "EndSignal") 
+        {
+            UIManager.Instance.GameOver();
         }
     }
 }
