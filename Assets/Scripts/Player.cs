@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
                 "Tuviste una sobredosis de preocupación y desarrollaste un trastorno de ansiedad.";
 
             UIManager.Instance.GameOver("GAME OVER", gameOverLabel);
+            PlayReaction("Dead");
         }
         else
         {
