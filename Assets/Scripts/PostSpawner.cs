@@ -21,7 +21,8 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
     public Post SpawnPost(Post post, float speed)
     {
         var spawnedPost = Instantiate(post, transform);
-        spawnedPost.Speed = speed;
+        spawnedPost.transform.SetAsFirstSibling();
+        spawnedPost.SetSpeed(speed);
 
         posts.Add(spawnedPost);
         return spawnedPost;
@@ -30,8 +31,6 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
     public void RemovePost(Post post)
     {
         posts.Remove(post);
-        GameObject.Destroy(post.gameObject);
-        //TODO: death anim
     }
 
     public new void OnNotify(Playable origin, INotification notification, object context)

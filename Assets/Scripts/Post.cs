@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,17 +13,20 @@ public class Post : MonoBehaviour
     }
     public ExistentialValue Value;
 
-    public float Speed;
-
-    public void Update()
+    public void SetSpeed(float speed)
     {
-        transform.position += Vector3.up * Speed *Time.deltaTime;
+        GetComponent<Animator>().speed = speed;
     }
 
-    //public void Read()
-    //{
-    //    PostSpawner.Instance.RemovePost(this);
-    //}
+    public void Read()
+    {
+        PostSpawner.Instance.RemovePost(this);
+        GameObject.Destroy(gameObject); // TODO: Replace with anim
+    }
 
-
+    public void Ignore()
+    {
+        PostSpawner.Instance.RemovePost(this);
+        GameObject.Destroy(gameObject); // TODO: Replace with anim
+    }
 }
