@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7913531688696134338, guid: 837786d45b23b5d4da0ff2fc14cd00db, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8609821506562419837, guid: 837786d45b23b5d4da0ff2fc14cd00db, type: 3}
       propertyPath: m_SceneBindings.Array.size
       value: 3
