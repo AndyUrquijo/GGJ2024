@@ -22,6 +22,7 @@ public class PostSpawner : SignalReceiver, INotificationReceiver
     {
         var spawnedPost = Instantiate(post, transform);
         spawnedPost.transform.SetAsFirstSibling();
+        spawnedPost.transform.localPosition = Vector3.zero;
         spawnedPost.SetSpeed(speed);
 
         posts.Add(spawnedPost);
