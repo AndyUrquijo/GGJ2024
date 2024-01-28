@@ -11,13 +11,12 @@ public class Player : MonoBehaviour
     public int MaxHealth { get; private set; }
 
     public Action OnLoseHealth;
-    Animator animator;
+    [SerializeField] Animator animator;
 
     void Awake()
     {
         Instance = this;
         MaxHealth = Health;
-        animator = GetComponent<Animator>();
         animator.SetFloat("HealthRatio", 1);
     }
 
@@ -37,10 +36,13 @@ public class Player : MonoBehaviour
                 if(nextPost.Value == Post.ExistentialValue.DREAD)
                 {
                     LoseHealth();
-                    animator.SetTrigger("Surprise");
+                    animator.SetTrigger(nextPost.ReactionId);
                 }
                 else
-                    animator.SetTrigger("Glad");
+                {
+                    animator.SetTrigger(nextPost.ReactionId);
+                    //animator.SetTrigger("Glad");
+                }
 
                 nextPost.Read();
                 break;
@@ -49,10 +51,13 @@ public class Player : MonoBehaviour
                 if(nextPost.Value == Post.ExistentialValue.CHILL)
                 {
                     LoseHealth();
-                    animator.SetTrigger("Surprise");
+                    animator.SetTrigger("Sad");
                 }
                 else
-                    animator.SetTrigger("Glad");
+                {
+                    //animator.SetTrigger("sumthin");
+                }
+
                 nextPost.Pass();
                 break;
         }

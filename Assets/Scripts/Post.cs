@@ -8,11 +8,14 @@ public class Post : MonoBehaviour
         DREAD
     }
     public ExistentialValue Value;
-
+    public string Reaction;
+    public int ReactionId;
     Animator animator;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        ReactionId = Animator.StringToHash(Reaction);
     }
 
     public void SetSpeed(float speed)
