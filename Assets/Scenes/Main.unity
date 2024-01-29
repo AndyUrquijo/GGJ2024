@@ -34153,6 +34153,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -300
       objectReference: {fileID: 0}
+    - target: {fileID: 8561762834321344901, guid: 94d321ac4a6325c4c9b12ed50d344877, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561762834321344901, guid: 94d321ac4a6325c4c9b12ed50d344877, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561762834321344901, guid: 94d321ac4a6325c4c9b12ed50d344877, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5181992641784950272, guid: 94d321ac4a6325c4c9b12ed50d344877, type: 3}
     m_RemovedGameObjects: []
