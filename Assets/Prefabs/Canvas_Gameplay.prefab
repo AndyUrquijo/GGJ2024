@@ -137,7 +137,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 948218895
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7913531688696134338
@@ -311,6 +311,8 @@ PlayableDirector:
   - key: {fileID: -6655370155808823182, guid: 16235aad1f0489046a7481773cdd6ead, type: 2}
     value: {fileID: 0}
   - key: {fileID: -1396994248514643927, guid: 16235aad1f0489046a7481773cdd6ead, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8022424878275270022, guid: 16235aad1f0489046a7481773cdd6ead, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
