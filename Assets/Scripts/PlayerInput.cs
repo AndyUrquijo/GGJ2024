@@ -49,7 +49,7 @@ public class PlayerInput : MonoBehaviour, IEndDragHandler, IPointerClickHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Click");
+        //Debug.Log("Click");
         OnTap.Invoke();
     }
 

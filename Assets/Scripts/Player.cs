@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
 
     public void PlayReaction(string emotion)
     {
+        Debug.Log(emotion);
         animator.SetTrigger(emotion);
     }
 
